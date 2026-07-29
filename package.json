@@ -1,0 +1,24 @@
+{
+  "name": "iso-ev-charging",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Honor-system coordination tool for EV charging spots at ISO-NE",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.539.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.1.1"
+  }
+}
