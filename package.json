@@ -3,11 +3,28 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Honor-system coordination tool for EV charging spots at ISO-NE",
+  "description": "Independent honor-system coordination tool for shared EV charging spots",
+  "license": "MIT",
+  "author": "Ross Mattheis",
+  "maintainers": [
+    {
+      "name": "Ross Mattheis"
+    }
+  ],
+  "homepage": "https://iso-ev-charging.iso-ev-charging.workers.dev/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramattheis/iso-ev-charging.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:licenses": "node scripts/check-licenses.mjs",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "cf:db:create": "wrangler d1 create iso-ev-charging --location=enam --binding=DB --update-config",
+    "cf:deploy": "npm run check:licenses && npm run build && wrangler deploy"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
@@ -16,9 +33,14 @@
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.53.1",
     "@tailwindcss/vite": "^4.1.11",
     "@vitejs/plugin-react": "^5.0.0",
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.2",
     "tailwindcss": "^4.1.11",
-    "vite": "^7.1.1"
+    "vite": "^7.1.1",
+    "wrangler": "^4.125.0"
   }
 }

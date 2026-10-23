@@ -2,6 +2,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.wrangler
+.dev.vars*
 
 # Logs
 logs
@@ -27,3 +29,5 @@ main.txt
 
 # Local tooling
 .claude
+output/
+tmp/

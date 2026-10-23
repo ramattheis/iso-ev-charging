@@ -1,0 +1,60 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "iso-ev-charging",
+	"main": "./worker/index.js",
+	"compatibility_date": "2026-08-24",
+	"workers_dev": true,
+	"preview_urls": false,
+	"assets": {
+		"not_found_handling": "single-page-application",
+		"run_worker_first": [
+			"/api/*"
+		]
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "iso-ev-charging",
+			"database_id": "3c82dbbc-3667-4435-abfa-1d88414d46a3"
+		}
+	],
+	"ratelimits": [
+		{
+			"name": "CLIENT_RATE_LIMITER",
+			"namespace_id": "271828101",
+			"simple": {
+				"limit": 30,
+				"period": 60
+			}
+		},
+		{
+			"name": "IP_RATE_LIMITER",
+			"namespace_id": "271828102",
+			"simple": {
+				"limit": 300,
+				"period": 60
+			}
+		},
+		{
+			"name": "WRITE_RATE_LIMITER",
+			"namespace_id": "271828103",
+			"simple": {
+				"limit": 10,
+				"period": 60
+			}
+		},
+		{
+			"name": "GLOBAL_API_RATE_LIMITER",
+			"namespace_id": "271828104",
+			"simple": {
+				"limit": 600,
+				"period": 60
+			}
+		}
+	],
+	"triggers": {
+		"crons": [
+			"17 10 * * *"
+		]
+	}
+}
